@@ -7,3 +7,7 @@ using: https://www.redhat.com/sysadmin/create-rpm-package as a guide
 # TODO: publish rpm
 
 make
+make test
+
+docker run -it mkinney:snet_rpm_test
+rpm -qa snet
