@@ -6,6 +6,11 @@ build: FORCE
 	docker build -t mkinney:snet_rpm .
 	docker cp $(shell docker create mkinney:snet_rpm):/root/rpmbuild/RPMS/x86_64/snet-0.4-1.el9.x86_64.rpm .
 
+test: FORCE
+	cp *.rpm test/
+	docker build -t mkinney:snet_rpm_test test
+	rm test/*.rpm
+
 clean:
 	docker rmi mkinney:snet_rpm || true
 	docker system prune
